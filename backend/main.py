@@ -308,7 +308,6 @@ def checkout(db: Session = Depends(get_db), current_user: models.User = Depends(
     for item in cart_items:
         sweet = db.query(models.Sweet).filter(models.Sweet.id == item.sweet_id).first()
         if sweet:
-            sweet.quantity -= item.quantity
             purchased_items.append({
                 "name": sweet.name,
                 "quantity": item.quantity,
