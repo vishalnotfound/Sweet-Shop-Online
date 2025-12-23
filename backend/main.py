@@ -51,20 +51,14 @@ async def seed_data():
         db.close()
 
 # CORS Setup (Allow Frontend)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173"], # Vite default port
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
+origins = [
+    "http://localhost:5173",
+    os.getenv("FRONTEND_URL", "http://localhost:5173"),
+]
 
 app.add_middleware(
     CORSMiddleware,
-    # Allow the specific Vercel URL
-    allow_origins=[FRONTEND_URL], 
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
