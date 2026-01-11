@@ -323,3 +323,7 @@ def checkout(db: Session = Depends(get_db), current_user: models.User = Depends(
         "items": purchased_items,
         "total_items": len(purchased_items)
     }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
