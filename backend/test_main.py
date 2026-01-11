@@ -75,4 +75,5 @@ def test_search_sweets(sample_user):
     token = test_login_user(sample_user)
     headers = {"Authorization": f"Bearer {token}"}
     response = client.get("/api/sweets/search?name=Test", headers=headers)
-    assert response.status_code == 200
+    assert response.status_code == 200 
+    assert isinstance(response.json(), list)    
