@@ -11,7 +11,7 @@ class UserOut(BaseModel):
     username: str
     role: str
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class SweetCreate(BaseModel):
     name: str
@@ -28,7 +28,7 @@ class SweetUpdate(BaseModel):
 class SweetOut(SweetCreate):
     id: int
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class CartItemCreate(BaseModel):
     sweet_id: int
@@ -39,7 +39,7 @@ class CartItemOut(BaseModel):
     sweet_id: int
     quantity: int
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class CartOut(BaseModel):
     items: list[CartItemOut]

@@ -115,7 +115,6 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
 @app.get("/api/sweets", response_model=List[schemas.SweetOut])
 def get_sweets(
     search: Optional[str] = None, 
-    current_user: models.User = Depends(get_current_user), 
     db: Session = Depends(get_db)
 ):
     query = db.query(models.Sweet)
@@ -129,7 +128,6 @@ def search_sweets(
     category: Optional[str] = None, 
     min_price: Optional[float] = None, 
     max_price: Optional[float] = None, 
-    current_user: models.User = Depends(get_current_user), 
     db: Session = Depends(get_db)
 ):
     query = db.query(models.Sweet)

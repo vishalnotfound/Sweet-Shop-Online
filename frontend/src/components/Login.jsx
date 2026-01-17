@@ -13,6 +13,7 @@ export default function Login({ setUser }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Login attempt with:', formData.username);
     try {
       if (isRegister) {
         await API.post("/auth/register", formData);
@@ -54,6 +55,7 @@ export default function Login({ setUser }) {
             <input
               className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:border-emerald-700 focus:ring-2 focus:ring-emerald-200 transition"
               placeholder="Enter your username"
+              value={formData.username}
               onChange={(e) =>
                 setFormData({ ...formData, username: e.target.value })
               }
@@ -67,6 +69,7 @@ export default function Login({ setUser }) {
               className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:border-emerald-700 focus:ring-2 focus:ring-emerald-200 transition"
               type="password"
               placeholder="Enter your password"
+              value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
               }

@@ -16,7 +16,9 @@ export default function Dashboard() {
     try {
       setLoading(true);
       setError("");
+      console.log("Fetching sweets...");
       const { data } = await API.get(`/sweets?search=${search}`);
+      console.log("Sweets received:", data);
       setSweets(data);
     } catch (err) {
       const errorMsg =
